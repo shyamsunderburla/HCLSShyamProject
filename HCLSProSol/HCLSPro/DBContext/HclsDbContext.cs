@@ -11,7 +11,7 @@ namespace HCLSPro.DBContext
             //Loosly coupled app dev
             public HclsDbContext(DbContextOptions<HclsDbContext> options) : base(options) { }
             public DbSet<AdminTypes> AdminTypes { get; set; }
-            public DbSet<Admin> Admin { get; set; }
+            public DbSet<Admin> Admins { get; set; }
         
     }
 }

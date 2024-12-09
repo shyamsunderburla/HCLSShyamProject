@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HCLSPro.Models
 {
-    [ Table (" AdminTypes")]
+    [ Table ("AdminTypes")]
     public class AdminTypes
     {
         [Key]
