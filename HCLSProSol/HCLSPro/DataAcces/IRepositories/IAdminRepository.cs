@@ -4,10 +4,10 @@ namespace HCLSPro.DataAcces.IRepositories
 {
     public interface IAdminRepository
     {
-        Task<List<Admin>> getAllAdmins();
-        Task<Admin> getAdminById(int AdminId);
-        Task<int> insertAdmin(Admin admin);
-        Task<int> updateAdmin(Admin admin);
-        Task<int> deleteAdmin(int AdminId);
+        Task<List<Admin>> GetAllAdmins();
+        Task<Admin> GetAdminById(int AdminId);
+        Task<int> InsertAdmin(Admin admin);
+        Task<int> UpdateAdmin(Admin admin);
+        Task<int> DeleteAdmin(int AdminId);
     }
 }

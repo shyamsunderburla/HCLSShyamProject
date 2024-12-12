@@ -14,33 +14,33 @@ namespace HCLSPro.DataAcces.Repositories
             dbContext = _dbContext;
         }
 
-        public async Task<int> deleteAdmin(int AdminId)
+        public async Task<int> DeleteAdmin(int AdminId)
         {
             var admin = await dbContext.Admins.FindAsync(AdminId);
             dbContext.Admins.Remove(admin);
             return await dbContext.SaveChangesAsync();
         }
 
-        public async Task<Admin> getAdminById(int AdminId)
+        public async Task<Admin> GetAdminById(int AdminId)
         {
             return await dbContext.Admins.FindAsync(AdminId);
         }
 
-        public async Task<List<Admin>> getAllAdmins()
+        public async Task<List<Admin>> GetAllAdmins()
         {
-           return await dbContext.Admins.ToListAsync();
+            return await dbContext.Admins.ToListAsync();
         }
 
-        public async Task<int> insertAdmin(Admin admin)
+        public async Task<int> InsertAdmin(Admin admin)
         {
-           await dbContext.Admins.AddAsync(admin);
+            await dbContext.Admins.AddAsync(admin);
             return await dbContext.SaveChangesAsync();
         }
 
-        public async Task<int> updateAdmin(Admin admin)
+        public async Task<int> UpdateAdmin(Admin admin)
         {
-            dbContext.Admins.Update(admin);
-            return await dbContext.SaveChangesAsync();  
+            await dbContext.Admins.AddAsync(admin);
+            return await dbContext.SaveChangesAsync();
         }
     }
 }
