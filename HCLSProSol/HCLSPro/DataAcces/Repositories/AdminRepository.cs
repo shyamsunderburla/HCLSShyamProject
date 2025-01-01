@@ -9,9 +9,16 @@ namespace HCLSPro.DataAcces.Repositories
     {
         // context class object creation
         public HclsDbContext dbContext;
+       
+
         public AdminRepository(HclsDbContext _dbContext)
         {
             dbContext = _dbContext;
+        }
+
+        public async Task<Admin> CheckAdminLogin(string Email, string Password)
+        {
+            return await dbContext.Admins!.Where(x => x.Email == Email && x.Password == Password).SingleOrDefaultAsync();
         }
 
         public async Task<int> DeleteAdmin(int AdminId)

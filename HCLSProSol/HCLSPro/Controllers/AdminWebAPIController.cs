@@ -11,6 +11,8 @@ namespace HCLSPro.Controllers
     {
         //INSTANCIATION
         public IAdminRepository AdminRef;
+       
+
         // CONSTRUCTOR
         public AdminWebAPIController(IAdminRepository _adminRef)
         {
@@ -24,10 +26,10 @@ namespace HCLSPro.Controllers
         {
             try
             {
-                var Admin = await AdminRef.GetAllAdmins();
-                if (Admin.Count > 0)
+                var adminTypes = await AdminRef.GetAllAdmins();
+                if (adminTypes.Count > 0)
                 {
-                    return Ok(Admin);
+                    return Ok(adminTypes);
                 }
                 else
                 {
@@ -49,10 +51,10 @@ namespace HCLSPro.Controllers
         {
             try
             {
-                var Admin = await AdminRef.GetAdminById(AdminId);
-                if (Admin != null)
+                var Admins = await AdminRef.GetAdminById(AdminId);
+                if (Admins != null)
                 {
-                    return Ok(Admin);
+                    return Ok(Admins);
                 }
                 else
                 {
@@ -130,6 +132,25 @@ namespace HCLSPro.Controllers
                 {
                     return BadRequest("No Record Deleted...!");
                 }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("sorry for inconvienince \n we will solve it soon \n" + ex.Message);
+            }
+
+        }
+        //    Web api method/Web api endpoint/ Api for CheckAdminLogin data
+        [HttpGet]
+        [Route("CheckAdminLogin")]
+        public async Task<IActionResult> CheckAdminLogin(string Email, string Password)
+        {
+            try
+            {
+                var admin = await AdminRef.CheckAdminLogin(Email, Password); // Retrieve the admin
+
+                
+                    return Ok(admin);
+               
             }
             catch (Exception ex)
             {
