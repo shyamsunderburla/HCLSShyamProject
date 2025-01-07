@@ -21,6 +21,6 @@ namespace HCLSPro.Models
         [ForeignKey ("AdminTypes")]
         public int AdminTypeId { get; set; }
 
-        public AdminTypes AdminTypes  {  get; set; }
+        public AdminTypes? AdminTypes  {  get; set; }
     }
 }

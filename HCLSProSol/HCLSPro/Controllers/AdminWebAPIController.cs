@@ -158,5 +158,69 @@ namespace HCLSPro.Controllers
             }
 
         }
+        //    Web api method/Web api endpoint/ Api for ActivateAdmin data
+        [HttpGet]
+        [Route("ActivateAdmin")]
+
+        public async Task<IActionResult> ActivateAdmin(string Email)
+        {
+            try
+            {
+                var admin = await AdminRef.ActivateAdmin(Email);
+                if (admin >0)
+                {
+                    return Ok(admin);
+                }
+                else
+                {
+                    return NotFound("No Account is found with the provided Email");
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("sorry for inconvienince \n we will solve it soon \n" + ex.Message);
+            }
+        }
+        //    Web api method/Web api endpoint/ Api for bringPassword data
+        [HttpGet]
+        [Route("bringPassword")]
+        public async Task<IActionResult> bringPassword(string Email)
+        {
+            try
+            {
+                var adminPassword = await AdminRef.BringPassword(Email);
+                return Ok(adminPassword);
+
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest($"Sorry for the inconvenience. We will solve this issue soon... Error: {ex.Message}");
+            }
+        }
+        //    Web api method/Web api endpoint/ Api for changePassword data
+        [HttpGet]
+        [Route("changePassword")]
+        public async Task<IActionResult> changePassword(string Email, string Password)
+        {
+            try
+            {
+
+                var admin = await AdminRef.ChangePassword(Email, Password);
+                if (admin > 0)
+                {
+                    return Ok(admin);
+                }
+                else
+                {
+                    return NotFound("No admin found with the provided email.");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest($"Sorry for the inconvenience. We will solve this issue soon... Error: {ex.Message}");
+            }
+        }
     }
 }
